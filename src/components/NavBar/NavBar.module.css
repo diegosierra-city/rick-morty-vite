@@ -1,0 +1,17 @@
+.header{
+ background: linear-gradient(to right, #98c5d8, #411bbd) ;
+ color:white; height: 80px;  margin-bottom: 50px;
+ display: flex; 
+}
+
+.logo{position: relative; top: -40px}
+.logo img{
+ width: 350px;
+}
+.logout{
+ position: absolute;
+ top:20px;
+ right: 20px; 
+ cursor:pointer
+ 
+}
