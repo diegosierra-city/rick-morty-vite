@@ -24,6 +24,7 @@ return(
 <IconMoodX size="30" />
   </div>
   <div className={styles.menu}>
+<Link to="/favorites"><button className="boton-principal">Favorites</button></Link>    
 <Link to="/home"><button className="boton-principal">Home</button></Link>
 <Link to="/about"><button className="boton-principal">About</button></Link>
 

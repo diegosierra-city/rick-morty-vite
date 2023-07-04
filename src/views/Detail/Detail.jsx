@@ -16,7 +16,7 @@ export default function Detail(){
       alert('No hay personajes con ese ID');
    }
 });
-return setCharacter({});
+return setCharacter({}); ///limpia cuando se desmonta o se sale de la pagina
  },[id])
  //console.log('PG',id)
  return(

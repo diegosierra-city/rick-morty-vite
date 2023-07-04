@@ -31,9 +31,11 @@ body {
   /* filter: saturate(20%); */
   background-size: cover;
   background-attachment: fixed; min-height: 100vh;
+  width: 100vw;
+  max-width: 100vw !important; 
   
- 
 }
+div{max-width: 100vw;}
 
 a {
   font-weight: 500;
@@ -81,7 +83,7 @@ h2 {
 }
 
 #root{
-  min-height: 100vh;
+  min-height: 100vh; width: 100vw; max-width: 100vw !important;
   background-color: rgba(0,0,0,0,0.7);
 }
 

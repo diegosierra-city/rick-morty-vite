@@ -8,30 +8,19 @@ import About from "./views/About/About";
 import Detail from "./views/Detail/Detail";
 import Error404 from "./views/Error404/Error404";
 import Form from "./views/Form/Form";
+import Favorites from "./views/Favorites/Favorites";
+import {removeFav} from './redux/actions'
+import {useDispatch} from 'react-redux'
 
 
-/* const example = {
-   id: 1,
-   name: 'Rick Sanchez',
-   status: 'Alive',
-   species: 'Human',
-   gender: 'Male',
-   origin: {
-      name: 'Earth (C-137)',
-      url: 'https://rickandmortyapi.com/api/location/1',
-   },
-   image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-}; */
 
 function App() {
   const [characters, setCharacters] = useState([]);
+const dispatch = useDispatch()
 
   let {pathname} = useLocation();
 
-  /*  const onSearch = () => {
-  setCharacters([...characters, example])
-   } */
-
+ 
   function onSearch(id) {
     //alert(id)
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(
@@ -52,6 +41,7 @@ function App() {
       (character) => character.id !== Number(id)
     );
     setCharacters(newCharacters);
+    dispatch(removeFav(Number(id)))
   };
 
   const [access, setAcess] = useState(false);
@@ -73,6 +63,7 @@ function App() {
 <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
 <Route path="/about" element={<About />} />
 <Route path="/detail/:id" element={<Detail />} />
+<Route path="/favorites" element={<Favorites />} />
 <Route path="*" element={<Error404 />} />
 </Routes>
     
