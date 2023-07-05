@@ -89,7 +89,8 @@ export default function Form({ setAcess }) {
       />
       {errors.password && <p className={styles.danger}>{errors.password}</p>}
       <br />
-      <button type="submit">Enviar</button>
+      <br />
+      <button type="submit" className="boton-principal">Enviar</button>
     </form>
   );
 }
