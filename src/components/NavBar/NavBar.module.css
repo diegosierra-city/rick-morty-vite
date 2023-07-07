@@ -1,7 +1,13 @@
 .header{
  background: linear-gradient(to right, #98c5d8, #411bbd) ;
  color:white; height: 80px;  margin-bottom: 50px;
- display: flex; 
+  border-bottom: solid 2px black;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.col {
+ flex: 1;
 }
 
 .logo{position: relative; top: -40px}
@@ -13,5 +19,23 @@
  top:20px;
  right: 20px; 
  cursor:pointer
+ 
+}
+.menu{height: 80px; display:flex; align-items: center; justify-content: center;}
+
+
+@media screen and (max-width: 690px) {
+ .header {
+  flex-direction: column;
+}
+.col:first-child {
+  order: 1;
+}
+.col:nth-child(2) {
+  order: 0;
+}
+.col:last-child {
+  order: 2;
+}
  
 }

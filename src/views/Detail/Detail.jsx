@@ -2,10 +2,18 @@ import { useParams } from "react-router-dom"
 import {useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Detail.module.css'
+//import {useHistory} from 'react-router-dom'
+
 
 export default function Detail(){
  const [character, setCharacter] = useState({})
  let {id}=useParams() ///id del personaje por GET
+
+ 
+
+  const handleBack = () => {
+    //history.goBack();
+  };
 
  useEffect(()=>{
   axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
@@ -22,9 +30,9 @@ return setCharacter({}); ///limpia cuando se desmonta o se sale de la pagina
  return(
   <div className={styles.container}>
    {character.name? (
-    <>
-     <div>
-        <div>Regresar con historial</div>
+    <div className={styles.detail}>
+     <div className={styles.col}>
+        <button onClick={handleBack}>Regresar</button>
    <h1>{character.name}</h1> 
    <div>Status: {character.status}</div>
    <div>Species: {character.species}</div>
@@ -32,12 +40,12 @@ return setCharacter({}); ///limpia cuando se desmonta o se sale de la pagina
    <div>Origin: {character.origin?.name}</div>
    </div>
    
-   <div>
+   <div className={styles.col}>
     <img src={character.image} alt="" />
     <div>{character.id}</div>
     <div>Episodio: {character.episode?.[0]}</div>
    </div>
-   </> 
+   </div> 
    ) : (<h2>Cargando..</h2>) }
    
    </div>

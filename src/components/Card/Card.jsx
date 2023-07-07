@@ -32,10 +32,12 @@ const dispatch = useDispatch()
    return (
       <div className={style.card}>
 
+<Link to={`/detail/${character.id}`}>
          <div className={style.cardImageUp}>
 <img src={character.image} alt={character.name} />
 <h2 className={style.cardTitle}>{character.name}</h2>
          </div>
+         </Link>
          
 <div className={style.cardID}>
 {character.id}

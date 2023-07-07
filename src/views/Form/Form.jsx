@@ -60,9 +60,13 @@ export default function Form({ setAcess }) {
       alert("Usuario o contraseña incorrectos");
     }
   };
-  console.log("INITx", userData.email, "FINx", userData.password, "pp");
+  //console.log("INITx", userData.email, "FINx", userData.password, "pp");
+
+
   return (
+    <div className={styles.container}>
     <form className={styles.form} onSubmit={handleSubmit}>
+      <h2>Bienvenido</h2>
       <label htmlFor="email">Correo Electrónico:</label>
       <br />
       <input
@@ -90,7 +94,8 @@ export default function Form({ setAcess }) {
       {errors.password && <p className={styles.danger}>{errors.password}</p>}
       <br />
       <br />
-      <button type="submit" className="boton-principal">Enviar</button>
+      <button type="submit" className="boton-principal">Ingresar</button>
     </form>
+    </div>
   );
 }

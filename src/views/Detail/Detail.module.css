@@ -1,7 +1,15 @@
 .container{
- display: grid;
- grid-template-columns: 1fr 1fr;
- width: 80%;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+}
+
+.detail{
+ width: 80%; display: flex;
+ flex-wrap: wrap;
  margin-left: 10%; padding: 10px;
- background-color: rgba(255,255,255,0.7);
+ background-color: rgba(255,255,255,0.7); padding:20px; border-radius: 12px; border:solid 2px white
+}
+.col{
+ flex: 1;
 }

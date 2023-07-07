@@ -20,23 +20,30 @@ navigate('/')
   }
 return(
  <div className={styles.header}>
+
   <div className={styles.logout} onClick={logOut}>
 <IconMoodX size="30" />
   </div>
-  <div className={styles.menu}>
+  
+  <div className={`${styles.menu} ${styles.col}`}>
 <Link to="/favorites"><button className="boton-principal">Favorites</button></Link>    
 <Link to="/home"><button className="boton-principal">Home</button></Link>
 <Link to="/about"><button className="boton-principal">About</button></Link>
 
   </div>
 
-  <div className={styles.logo}>
+  <div className={`${styles.logo} ${styles.col}`}>
   <img src="../../src/assets/images/logo.png" alt="logo" />
   </div>
 
-  <SearchBar onSearch={props.onSearch} />
 
-  <button className="boton-principal" onClick={()=>{props.onSearch(characterRandom())}}>Random</button>
+<div className={`${styles.menu} ${styles.col}`}>
+ <SearchBar onSearch={props.onSearch} />
+ <button className="boton-principal" onClick={()=>{props.onSearch(characterRandom())}}>Random</button> 
+</div>
+  
+
+  
  </div>
  
 )
