@@ -16,7 +16,7 @@ export default function Detail(){
   };
 
  useEffect(()=>{
-  axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+  axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
    if (data.name) {
       setCharacter(data);
       console.log('PPP',data)

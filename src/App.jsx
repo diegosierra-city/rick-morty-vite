@@ -23,7 +23,8 @@ const dispatch = useDispatch()
  
   function onSearch(id) {
     //alert(id)
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+    //axios(`https://rickandmortyapi.com/api/character/${id}`).
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
         if (data.name && !characters.find((character) => character.id === data.id)) {
           setCharacters([...characters, data]);
