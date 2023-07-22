@@ -1,7 +1,9 @@
 import Cards from '../../components/Cards/Cards'
 import { useSelector, useDispatch } from 'react-redux'
-import { filter, order } from '../../redux/actions'
+import { filter, order, allFav } from '../../redux/actions'
 import styles from './Favorites.module.css'
+import { useEffect } from 'react'
+
 
 export default function Favorites(){
 const favorites = useSelector(state => state.myFavorites)
@@ -14,6 +16,10 @@ function handleFilter (event){
 function handleOrder (event){
   event.target.value!=='' && dispatch(order(event.target.value))
 }
+
+useEffect(()=>{
+  dispatch(allFav())
+},[])
  return(
   <div>
     <div className={styles.filtros}>

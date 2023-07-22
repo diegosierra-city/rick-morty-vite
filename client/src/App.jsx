@@ -20,21 +20,44 @@ const dispatch = useDispatch()
 
   let {pathname} = useLocation();
 
+  const [access, setAccess] = useState(false);
+  
+  const navigate = useNavigate();
+
+  async function logIn(userData) {
+const { email, password } = userData;
+   const URL = 'http://localhost:3001/rickandmorty/login/';
+
+   try {
+    let response = await axios(URL + `?email=${email}&password=${password}`)
+    let data = response.data;
+    const { access } = data;
+      setAccess(access);
+      access? navigate('/home') : alert('Usuario o contraseña incorrectos')
+   } catch (error) {
+    alert(error)
+   }
+   
+  
+}
  
-  function onSearch(id) {
-    //alert(id)
-    //axios(`https://rickandmortyapi.com/api/character/${id}`).
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
-        if (data.name && !characters.find((character) => character.id === data.id)) {
-          setCharacters([...characters, data]);
-        } else if(!data.name) {
-          alert("¡No hay personajes con este ID!");
-        }else{
-         alert("Ya esta este personaje");
-        }
-      }
-    );
+  async function onSearch(id) {
+  try {
+    let response = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+
+    let data = response.data;
+    if (data.name && !characters.find((character) => character.id === data.id)) {
+      setCharacters([...characters, data]);
+    } else if(!data.name) {
+      alert("¡No hay personajes con este ID!");
+    }else{
+     alert("Ya esta este personaje");
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+   
   }
 
   const onClose = (id) => {
@@ -45,9 +68,7 @@ const dispatch = useDispatch()
     dispatch(removeFav(Number(id)))
   };
 
-  const [access, setAcess] = useState(false);
   
-  const navigate = useNavigate();
 
   
   //al montar se valida el usuario
@@ -57,10 +78,10 @@ const dispatch = useDispatch()
 
   return (
     <div className="App">
-      {pathname!='/' && <NavBar onSearch={onSearch} setAcess={setAcess} />}
+      {pathname!='/' && <NavBar onSearch={onSearch} setAccess={setAccess} />}
       
 <Routes>
-<Route path="/" element={<Form setAcess={setAcess}/>} />
+<Route path="/" element={<Form setAccess={setAccess} logIn={logIn}/>} />
 <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
 <Route path="/about" element={<About />} />
 <Route path="/detail/:id" element={<Detail />} />

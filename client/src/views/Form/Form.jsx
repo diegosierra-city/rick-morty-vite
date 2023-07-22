@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const emailBase = "diegosierra@cityciudad.com";
   const passwordBase = "123456";
 
-export default function Form({ setAcess }) {
+export default function Form({ setAcess, logIn }) {
   const [login, setLogin] = useState(false);
 
   const [userData, setUserData] = useState({
@@ -45,7 +45,10 @@ export default function Form({ setAcess }) {
       return;
     }
 
-    if (userData.email === emailBase && userData.password === passwordBase) {
+    logIn(userData);
+    
+
+    /* if (userData.email === emailBase && userData.password === passwordBase) {
       setAcess(true);
 
       setErrors({
@@ -58,7 +61,7 @@ export default function Form({ setAcess }) {
       });
     } else {
       alert("Usuario o contraseña incorrectos");
-    }
+    } */
   };
   //console.log("INITx", userData.email, "FINx", userData.password, "pp");
 
