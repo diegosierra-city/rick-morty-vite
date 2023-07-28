@@ -1,6 +1,17 @@
 const app = require("./app");
+require('dotenv').config();
+const {PORT} = process.env;
+const { conn } = require('./DB_connection');
 
-app.listen(3001, () => console.log("Servidor corriendo en puerto 3001"));
+conn.sync({ alter:true })//force false para produccion - alter:true actualiza los cambios sin borrar / force: true borra cada vez que se inicia el servidor
+.then(() => { 
+  console.log("Conexion a la base de datos establecida");
+  app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+})
+.catch((err) => {
+  console.log(err);
+})
+
 
 /* const http = require("http");
 //const fs = require("fs");

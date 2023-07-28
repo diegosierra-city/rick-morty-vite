@@ -3,7 +3,7 @@ import {useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Detail.module.css'
 //import {useHistory} from 'react-router-dom'
-
+import { Link } from "react-router-dom"
 
 export default function Detail(){
  const [character, setCharacter] = useState({})
@@ -12,7 +12,7 @@ export default function Detail(){
  
 
   const handleBack = () => {
-    //history.goBack();
+   //history.goBack();
   };
 
  useEffect(()=>{
@@ -30,9 +30,9 @@ return setCharacter({}); ///limpia cuando se desmonta o se sale de la pagina
  return(
   <div className={styles.container}>
    {character.name? (
-    <div className={styles.detail}>
+    <div className={styles.cardInterno}>
      <div className={styles.col}>
-        <button onClick={handleBack}>Regresar</button>
+      <Link to={'/home'}>  <button className="boton-principal">Regresar</button> </Link>
    <h1>{character.name}</h1> 
    <div>Status: {character.status}</div>
    <div>Species: {character.species}</div>
@@ -41,8 +41,8 @@ return setCharacter({}); ///limpia cuando se desmonta o se sale de la pagina
    </div>
    
    <div className={styles.col}>
-    <img src={character.image} alt="" />
-    <div>{character.id}</div>
+    <img src={character.image} alt="" className={styles.cardImage} />
+    <div className={styles.cardID}>{character.id}</div>
     <div>Episodio: {character.episode?.[0]}</div>
    </div>
    </div> 

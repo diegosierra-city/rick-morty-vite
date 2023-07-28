@@ -6,7 +6,9 @@ import { useEffect } from 'react'
 
 
 export default function Favorites(){
-const favorites = useSelector(state => state.myFavorites)
+
+ 
+let favorites = useSelector(state => state.myFavorites)
 const dispatch = useDispatch()
 
 function handleFilter (event){

@@ -17,10 +17,11 @@ export const addFav = (character) => {
 
 /// redux y express
 export const addFav = (character) => {
+   //console.log('T',character)
 return async (dispatch) => {
    try {
-     let esponse = await  axios.post('http://localhost:3001/rickandmorty/fav', character)
-     let data = esponse.data
+     let response = await  axios.post('http://localhost:3001/rickandmorty/fav', character)
+     let data = response.data
      return dispatch({
       type: 'ADD_FAV',
       payload: data,
@@ -50,7 +51,7 @@ export const removeFav = (id) => {
          let data = response.data
          return dispatch({
             type: 'REMOVE_FAV',
-            payload: data,
+            payload: id,
       });
       }catch (error) {
          console.log(error)

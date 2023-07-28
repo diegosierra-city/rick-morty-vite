@@ -10,9 +10,9 @@
  flex: 1;
 }
 
-.logo{position: relative; top: -40px}
+.logo{position: relative; top: -40px; }
 .logo img{
- width: 350px;
+ width: 350px; border:none; border-radius: 0px;
 }
 .logout{
  position: absolute;
@@ -24,10 +24,13 @@
 .menu{height: 80px; display:flex; align-items: center; justify-content: center;}
 
 
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 950px) {
  .header {
-  flex-direction: column;
+  display:grid; grid-template-columns: 1fr 1fr; gap: 0; height: 150px;
+  
 }
+.header img{position: absolute; top:30px}
+
 .col:first-child {
   order: 1;
 }

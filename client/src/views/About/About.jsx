@@ -11,10 +11,11 @@ let character={
  "id": '0',
  "name": "Diego Sierra",
  "status": "Vivo",
- "species": "HUmana",
+ "species": "Humana",
  "type": "",
+ "episode": "Todos",
  "gender": "Male",
- 
+ "origin": {"name":"Colombia"},
  "image": "../../src/assets/images/Diego.jpg",
   "url": "https://diegosierra.vercel.app",
  "created": "2021-11-02T13:07:40.795Z"
@@ -23,9 +24,9 @@ let character={
  return(
   <div className={styles.container}>
    {character.name? (
-    <div className={styles.detail}>
+    <div className={styles.cardInterno}>
      <div className={styles.col}>
-        <button onClick={handleBack}>Regresar</button>
+        
    <h1>{character.name}</h1> 
    <div>Status: {character.status}</div>
    <div>Species: {character.species}</div>
@@ -34,9 +35,9 @@ let character={
    </div>
    
    <div className={styles.col}>
-    <img src={character.image} alt="" />
-    <div>{character.id}</div>
-    <div>Episodio: {character.episode?.[0]}</div>
+    <img src={character.image} alt="" className={styles.cardImage} />
+    <div className={styles.cardID}>{character.id}</div>
+    <div>Episodio: {character.episode}</div>
    </div>
    </div> 
    ) : (<h2>Cargando..</h2>) }
